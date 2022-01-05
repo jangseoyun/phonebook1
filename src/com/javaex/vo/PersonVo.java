@@ -6,10 +6,8 @@ public class PersonVo {
 	private String name;
 	private String hp;
 	private String company;
-
-	public PersonVo(int personId) {
-		this.personId = personId;
-	}
+	
+	public PersonVo() {}
 
 	public PersonVo(String name, String hp, String company) {
 		this.name = name;
@@ -22,6 +20,13 @@ public class PersonVo {
 		this.name = name;
 		this.hp = hp;
 		this.company = company;
+	}
+	
+	public PersonVo( String name, String hp, String company, int personId) {
+		this.name = name;
+		this.hp = hp;
+		this.company = company;
+		this.personId = personId;
 	}
 
 	public int getPersonId() {

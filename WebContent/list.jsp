@@ -46,7 +46,7 @@
 				<td><%= personList.get(i).getCompany() %></td>
 			</tr>
 			<tr>
-				<td>수정</td>
+				<td><a href = "./updateForm.jsp?id=<%= personList.get(i).getPersonId() %>">[수정]</a></td>
 				<td><a href = "./delete.jsp?id=<%= personList.get(i).getPersonId() %>">[삭제]</a></td>
 			</tr>
 		</table>

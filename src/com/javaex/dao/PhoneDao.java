@@ -142,6 +142,49 @@ public class PhoneDao {
 		return personList;
 
 	}
+	
+	//사람 수정
+	public PersonVo getPerson(int index) {
+
+		getConnection();
+		
+		PersonVo personVo = null;
+		
+		try {
+
+			// 3. SQL문 준비 / 바인딩 / 실행
+			String query = ""; // 쿼리문 문자열만들기, ? 주의
+			query += " select  person_id, ";
+			query += "         name, ";
+			query += "         hp, ";
+			query += "         company ";
+			query += " from person ";
+			query += " where person_id = ? ";
+
+			pstmt = conn.prepareStatement(query); // 쿼리로 만들기
+			
+			pstmt.setInt(1, index); // ?(물음표) 중 1번째, 순서중요
+			
+			rs = pstmt.executeQuery(); // 쿼리문 실행
+
+			// 4.결과처리
+			
+			rs.next();
+			int personId = rs.getInt("person_id");
+			String name = rs.getString("name");
+			String hp = rs.getString("hp");
+			String company = rs.getString("company");
+
+			personVo = new PersonVo(personId, name, hp, company);
+
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		}
+
+		close();
+		return personVo;
+	}
+
 
 	// 사람 수정
 	public int personUpdate(PersonVo personVo) {
